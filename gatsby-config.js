@@ -12,7 +12,7 @@ module.exports = {
       options: {
         mergeSecurityHeaders: true,
       },
-    }
+    },
     `gatsby-plugin-netlify-cache`,
     {
       resolve: `gatsby-source-filesystem`,
