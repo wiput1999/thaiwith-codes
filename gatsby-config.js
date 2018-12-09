@@ -8,6 +8,13 @@ module.exports = {
   pathPrefix: '/gatsby-starter-blog',
   plugins: [
     {
+      resolve: `gatsby-plugin-netlify`,
+      options: {
+        mergeSecurityHeaders: true,
+      },
+    }
+    `gatsby-plugin-netlify-cache`,
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
