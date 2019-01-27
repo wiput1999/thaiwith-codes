@@ -1,71 +1,67 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
+import {Link} from 'gatsby'
 
-import { rhythm, scale } from '../utils/typography'
+import Dev from './dev'
+import Footer from './footer'
+import Navbar from './navbar'
 
-class Layout extends React.Component {
-  render () {
-    const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
-    let header
+import layoutStyle from './layout.module.css'
 
-    if (location.pathname === rootPath) {
-      header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit'
-            }}
-            to={'/'}
-          >
-            {title}
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3
-          style={{
-            fontFamily: 'Montserrat, sans-serif',
-            marginTop: 0,
-            marginBottom: rhythm(-1)
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: 'none',
-              textDecoration: 'none',
-              color: 'inherit'
-            }}
-            to={'/'}
-          >
-            {title}
-          </Link>
-        </h3>
-      )
+export default class LayoutTemplate extends React.Component {
+  render() {
+    let devStrip = ''
+
+    const {GATSBY_ENV = 'development'} = process.env
+
+    if (GATSBY_ENV !== 'production') {
+      devStrip = <Dev />
     }
+    const {children} = this.props
     return (
-      <div
-        style={{
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`
-        }}
-      >
-        {header}
-        {children}
+      <div className={layoutStyle.page}>
+        {devStrip}
+        <div className={layoutStyle.cover}>
+          <div className={[layoutStyle.container]}>
+            <div className={[layoutStyle.header]}>
+              <Link to={'/'}>
+                <img
+                  className={layoutStyle.logo}
+                  alt="logo"
+                  src="/header.png"
+                />
+              </Link>
+              <Navbar
+                align="center"
+                keys="navHeader"
+                tabs={[
+                  {
+                    name: 'Home',
+                    href: '/',
+                    newtab: false,
+                  },
+                  {
+                    name: 'Category',
+                    href: '/category',
+                    newtab: false,
+                  },
+                  {
+                    name: '♪',
+                    href: 'https://l.rayriffy.com/nico',
+                    newtab: true,
+                  },
+                ]}
+              />
+            </div>
+            {children}
+          </div>
+          <Footer />
+        </div>
       </div>
     )
   }
 }
 
-export default Layout
+LayoutTemplate.propTypes = {
+  children: PropTypes.array,
+}
