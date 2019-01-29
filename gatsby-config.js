@@ -3,18 +3,18 @@ const {GATSBY_ENV = 'development'} = process.env
 var hostname
 
 if (GATSBY_ENV === 'production') {
-  hostname = 'https://blog.rayriffy.com'
+  hostname = 'https://thaiwith.codes'
 } else if (GATSBY_ENV === 'staging') {
-  hostname = 'https://blog-staging.rayriffy.com'
+  hostname = 'https://staging.thaiwith.codes'
 } else if (GATSBY_ENV === 'development') {
   hostname = 'https://localhost:8000'
 }
 
 module.exports = {
   siteMetadata: {
-    title: 'Riffy Blog',
+    title: 'Thai with Codes',
     author: 'Phumrapee Limpianchop',
-    description: 'The Nerdy Blogger',
+    description: 'A Tech Blog by Thai Developer',
     siteUrl: `${hostname}`,
   },
   pathPrefix: '/',
@@ -83,14 +83,8 @@ module.exports = {
           '/category/*',
           '/author',
           '/author/*',
-          '/category/lifestyle/pages/*',
-          '/category/misc/pages/*',
-          '/category/music/pages/*',
-          '/category/programming/pages/*',
-          '/category/review/pages/*',
-          '/category/tutorial/pages/*',
+          '/category/general/pages/*',
           '/author/rayriffy/pages/*',
-          '/author/SiriuSStarS/pages/*',
         ],
       },
     },
@@ -158,8 +152,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Riffy Blog`,
-        short_name: `Riffy Blog`,
+        name: `Thai with Codes`,
+        short_name: `Thai with Codes`,
         start_url: `/`,
         background_color: `#f5f5f5`,
         theme_color: `#1e88e5`,

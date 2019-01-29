@@ -54,63 +54,8 @@ exports.createPages = ({graphql, actions}) => {
                 }
               }
             }
-            lifestyle: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/lifestyle/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            misc: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/misc/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            music: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/music/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            programming: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/programming/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            review: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/review/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            tutorial: allMarkdownRemark(
-              filter: {frontmatter: {category: {regex: "/tutorial/"}}}
+            general: allMarkdownRemark(
+              filter: {frontmatter: {category: {regex: "/general/"}}}
             ) {
               edges {
                 node {
@@ -122,17 +67,6 @@ exports.createPages = ({graphql, actions}) => {
             }
             rayriffy: allMarkdownRemark(
               filter: {frontmatter: {author: {regex: "/rayriffy/"}}}
-            ) {
-              edges {
-                node {
-                  frontmatter {
-                    status
-                  }
-                }
-              }
-            }
-            SiriuSStarS: allMarkdownRemark(
-              filter: {frontmatter: {author: {regex: "/SiriuSStarS/"}}}
             ) {
               edges {
                 node {
@@ -154,26 +88,14 @@ exports.createPages = ({graphql, actions}) => {
                 allMarkdownRemark: {edges: null},
                 allCategoriesJson: {edges: null},
                 allAuthorsJson: {edges: null},
-                lifestyle: {edges: null},
-                misc: {edges: null},
-                music: {edges: null},
-                programming: {edges: null},
-                review: {edges: null},
-                tutorial: {edges: null},
+                general: {edges: null},
                 rayriffy: {edges: null},
-                SiriuSStarS: {edges: null},
               },
             }
             const filterNode = [
               'allMarkdownRemark',
-              'lifestyle',
-              'misc',
-              'music',
-              'programming',
-              'review',
-              'tutorial',
+              'general',
               'rayriffy',
-              'SiriuSStarS',
             ]
             _.each(filterNode, node => {
               filteredResult.data[node].edges = result.data[node].edges.filter(

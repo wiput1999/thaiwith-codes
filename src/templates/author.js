@@ -228,13 +228,6 @@ export const pageQuery = graphql`
         }
       }
     }
-    SiriuSStarS: file(relativePath: {eq: "SiriuSStarS.jpg"}) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 90) {
-          src
-        }
-      }
-    }
   }
 `
 
