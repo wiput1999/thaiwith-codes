@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Heading, Text } from 'rebass'
 
 interface BlogCardInterface {
-  width: number
+  width: number | number[]
   image: string
   heading: string
   subtitle: string
