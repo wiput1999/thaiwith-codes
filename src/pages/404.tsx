@@ -8,11 +8,13 @@ interface NotFoundPageProp {
   data: {
     site: {
       siteMetadata: {
-        title: unknown
+        title: string
       }
     }
-  },
-  location: unknown
+  }
+  location: {
+    pathname: string
+  }
 }
 
 class NotFoundPage extends React.Component<NotFoundPageProp> {

@@ -5,9 +5,9 @@ import { rhythm, scale } from '../utils/typography'
 
 interface PropInterface {
   location?: {
-    pathname: string,
-  },
-  title: string,
+    pathname: string
+  }
+  title: string
 }
 
 class Layout extends React.Component<PropInterface> {
@@ -22,14 +22,14 @@ class Layout extends React.Component<PropInterface> {
           style={{
             ...scale(1.5),
             marginBottom: rhythm(1.5),
-            marginTop: 0,
+            marginTop: 0
           }}
         >
           <Link
             style={{
               boxShadow: `none`,
               color: `inherit`,
-              textDecoration: `none`,
+              textDecoration: `none`
             }}
             to={`/`}
           >
@@ -42,14 +42,14 @@ class Layout extends React.Component<PropInterface> {
         <h3
           style={{
             fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
+            marginTop: 0
           }}
         >
           <Link
             style={{
               boxShadow: `none`,
               color: `inherit`,
-              textDecoration: `none`,
+              textDecoration: `none`
             }}
             to={`/`}
           >
@@ -64,7 +64,7 @@ class Layout extends React.Component<PropInterface> {
           marginLeft: `auto`,
           marginRight: `auto`,
           maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`
         }}
       >
         <header>{header}</header>

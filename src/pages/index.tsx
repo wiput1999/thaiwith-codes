@@ -7,29 +7,29 @@ import Layout from '../components/layout'
 import { rhythm } from '../utils/typography'
 
 interface PropInterface {
-  location: object,
+  location: object
   data: {
     site: {
       siteMetadata: {
-        title: string,
-      },
-    },
+        title: string
+      }
+    }
     allMarkdownRemark: {
-      edges: {
+      edges: Array<{
         node: {
-          excerpt: number,
+          excerpt: number
           frontmatter: {
-            date: string,
-            title: string,
-            description: string,
-          },
+            date: string
+            title: string
+            description: string
+          }
           fields: {
-            slug: string,
+            slug: string
           }
         }
-      }[],
-    },
-  },
+      }>
+    }
+  }
 }
 
 class BlogIndex extends React.Component<PropInterface> {
@@ -48,7 +48,7 @@ class BlogIndex extends React.Component<PropInterface> {
             <div key={node.fields.slug}>
               <h3
                 style={{
-                  marginBottom: rhythm(1 / 4),
+                  marginBottom: rhythm(1 / 4)
                 }}
               >
                 <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
@@ -58,7 +58,7 @@ class BlogIndex extends React.Component<PropInterface> {
               <small>{node.frontmatter.date}</small>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
+                  __html: node.frontmatter.description || node.excerpt
                 }}
               />
             </div>
@@ -78,7 +78,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           excerpt
