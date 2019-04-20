@@ -49,12 +49,16 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
+    "@babel/core": "^7.4.3",
     "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
     "@types/react-helmet": "^5.0.8",
     "eslint-config-react-app": "^3.0.8",
+    "eslint-plugin-flowtype": "^3.6.1",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.12.4",
+    "graphql": "^14.2.1",
     "prettier": "^1.17.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
