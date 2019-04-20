@@ -8,6 +8,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
+    "@raae/gatsby-remark-oembed": "^0.0.6",
     "@types/rebass": "^3.0.3",
     "@types/typography": "^0.16.2",
     "babel-eslint": "^10.0.1",
