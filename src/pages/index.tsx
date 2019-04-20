@@ -6,9 +6,33 @@ import Layout from '../components/layout'
 // import SEO from '../components/seo'
 import { rhythm } from '../utils/typography'
 
+interface PropInterface {
+  location: object,
+  data: {
+    site: {
+      siteMetadata: {
+        title: string,
+      },
+    },
+    allMarkdownRemark: {
+      edges: {
+        node: {
+          excerpt: number,
+          frontmatter: {
+            date: string,
+            title: string,
+            description: string,
+          },
+          fields: {
+            slug: string,
+          }
+        }
+      }[],
+    },
+  },
+}
 
-
-class BlogIndex extends React.Component {
+class BlogIndex extends React.Component<PropInterface> {
   public render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
