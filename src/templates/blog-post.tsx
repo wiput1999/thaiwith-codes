@@ -1,23 +1,67 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql, Link } from 'gatsby'
+import React from 'react'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import Bio from '../components/bio'
+import Layout from '../components/layout'
+import { rhythm, scale } from '../utils/typography'
 
-class BlogPostTemplate extends React.Component {
-  render() {
+interface PropsInterface {
+  location: {
+    pathname: string
+  },
+  pageContext: {
+    next: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+    previous: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+      };
+    };
+  }
+  data: {
+    site: {
+      siteMetadata: {
+        author: string;
+        description: string;
+        title: string;
+        siteUrl: string;
+        fbApp: string;
+      };
+    };
+    markdownRemark: {
+      fields: {
+        slug: string;
+      };
+      frontmatter: {
+        title: string;
+        subtitle: string;
+        author: string,
+        date: string;
+        featured: boolean;
+        status: string;
+      };
+      html: string;
+    };
+  }
+}
+
+class BlogPostTemplate extends React.Component<PropsInterface> {
+  public render() {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
         <h1>{post.frontmatter.title}</h1>
         <p
           style={{
@@ -48,14 +92,14 @@ class BlogPostTemplate extends React.Component {
         >
           <li>
             {previous && (
-              <Link to={previous.fields.slug} rel="prev">
+              <Link to={previous.fields.slug} rel='prev'>
                 ← {previous.frontmatter.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.fields.slug} rel="next">
+              <Link to={next.fields.slug} rel='next'>
                 {next.frontmatter.title} →
               </Link>
             )}
@@ -76,7 +120,7 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(fields: {slug: {eq: $slug}}) {
       id
       excerpt(pruneLength: 160)
       html
