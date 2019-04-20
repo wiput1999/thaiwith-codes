@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Card, Flex, Heading, Text } from 'rebass'
-import BlogCard from './blogcard'
+import { BlogCard } from './blog-card'
 
 export class Featured extends React.Component {
   public render() {
