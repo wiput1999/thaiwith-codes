@@ -10,13 +10,13 @@ export class Nav extends React.Component {
           thaiwith.codes
         </Heading>
         <Box mx='auto' />
-        <Link href='/' p={2} style={{textDecoration: 'none', fontSize: '15px'}} color='#000'>
+        <Link href='/' p={2} style={{ textDecoration: 'none', fontSize: '15px' }} color='#000'>
           Home
         </Link>
-        <Link href='/' p={2} style={{textDecoration: 'none', fontSize: '15px'}} color='#000'>
+        <Link href='/' p={2} style={{ textDecoration: 'none', fontSize: '15px' }} color='#000'>
           Categories
         </Link>
-        <Link href='/' p={2} style={{textDecoration: 'none', fontSize: '15px'}} color='#000'>
+        <Link href='/' p={2} style={{ textDecoration: 'none', fontSize: '15px' }} color='#000'>
           Authors
         </Link>
       </Flex>

@@ -12,7 +12,7 @@ export default class MockPage extends React.Component {
       <div>
         <Nav />
         <>
-          <Featured/>
+          <Featured />
           <Text>More</Text>
         </>
         <Footer />

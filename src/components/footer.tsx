@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Button, Card, Flex, Heading, Image, Link, Text } from 'rebass'
+import { Box, Flex, Heading, Link, Text } from 'rebass'
 
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
 
