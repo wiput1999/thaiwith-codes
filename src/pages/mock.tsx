@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Box, Card, Image, Heading, Text, Flex, Button, Link} from 'rebass'
+import {Box, Button, Card, Flex, Heading, Image, Link, Text} from 'rebass'
 
 export default class MockPage extends React.Component {
   public render() {
