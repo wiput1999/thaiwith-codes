@@ -1,12 +1,12 @@
-import React from "react"
-import { Link } from "gatsby"
+import { Link } from 'gatsby'
+import React from 'react'
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm, scale } from '../utils/typography'
 
 class Layout extends React.Component {
-  render() {
+  public render() {
     const { location, title, children } = this.props
-    const rootPath = `${__PATH_PREFIX__}/`
+    const rootPath = `/`
     let header
 
     if (location.pathname === rootPath) {
@@ -21,8 +21,8 @@ class Layout extends React.Component {
           <Link
             style={{
               boxShadow: `none`,
-              textDecoration: `none`,
               color: `inherit`,
+              textDecoration: `none`,
             }}
             to={`/`}
           >
@@ -41,8 +41,8 @@ class Layout extends React.Component {
           <Link
             style={{
               boxShadow: `none`,
-              textDecoration: `none`,
               color: `inherit`,
+              textDecoration: `none`,
             }}
             to={`/`}
           >
@@ -65,7 +65,7 @@ class Layout extends React.Component {
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <a href='https://www.gatsbyjs.org'>Gatsby</a>
         </footer>
       </div>
     )

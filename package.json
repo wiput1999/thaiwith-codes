@@ -27,6 +27,8 @@
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.0.32",
+    "gatsby-plugin-tslint": "^0.0.2",
+    "gatsby-plugin-typescript": "^2.0.12",
     "gatsby-plugin-typography": "^2.2.12",
     "gatsby-remark-copy-linked-files": "^2.0.11",
     "gatsby-remark-images": "^2.0.6",
@@ -49,9 +51,19 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
+    "@types/react": "^16.8.14",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-helmet": "^5.0.8",
+    "eslint-config-react-app": "^3.0.8",
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.12.4",
-    "prettier": "^1.17.0"
+    "prettier": "^1.17.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-loader": "^3.5.4",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.4.4"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
   "keywords": [
@@ -69,9 +81,10 @@
     "dev:network": "gatsby develop -H 0.0.0.0",
     "develop": "yarn dev",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "lint": "eslint ./src/**/*.js",
+    "lint": "tslint --project .",
     "start": "yarn dev",
     "serve": "gatsby serve",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "type-check": "tsc --noEmit"
   }
 }
