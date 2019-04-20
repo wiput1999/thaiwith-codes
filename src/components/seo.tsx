@@ -12,8 +12,10 @@ import Helmet from 'react-helmet'
 interface SeoInterface {
   description: string,
   lang: string,
-  meta: unknown,
-  keywords: unknown,
+  meta: object,
+  keywords: {
+    length: number,
+  }[],
   title: string
 }
 

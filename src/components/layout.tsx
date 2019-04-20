@@ -3,7 +3,14 @@ import React from 'react'
 
 import { rhythm, scale } from '../utils/typography'
 
-class Layout extends React.Component {
+interface PropInterface {
+  location?: {
+    pathname: string,
+  },
+  title: string,
+}
+
+class Layout extends React.Component<PropInterface> {
   public render() {
     const { location, title, children } = this.props
     const rootPath = `/`
