@@ -49,6 +49,9 @@ export class More extends React.Component {
                 subtitle='Subtitle'
               />
             </Flex>
+            <Flex justifyContent='center'>
+              <Button>MORE</Button>
+            </Flex>
           </Box>
         </Flex>
       </>

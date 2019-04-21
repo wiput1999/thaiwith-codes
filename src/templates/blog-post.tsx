@@ -1,7 +1,6 @@
 import { graphql, Link } from 'gatsby'
 import React from 'react'
 
-import Bio from '../components/bio'
 import Layout from '../components/layout'
 import { rhythm, scale } from '../utils/typography'
 
@@ -79,7 +78,6 @@ class BlogPostTemplate extends React.Component<PropsInterface> {
             marginBottom: rhythm(1)
           }}
         />
-        <Bio />
 
         <ul
           style={{
