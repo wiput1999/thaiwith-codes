@@ -8,7 +8,7 @@ export class Footer extends React.Component {
   public render() {
     return (
       <>
-        <Flex alignItems='center' bg='#393a3a'>
+        <Flex alignItems='center' bg='#393a3a' mt={50}>
           <Box mt={75} mb={50} mx='auto' color='white' width={18 / 24}>
             <Flex flexWrap='wrap'>
               <Box px={[0, 2, 5]} mb={4} width={[1, 1, 1 / 2, 1 / 2]}>
