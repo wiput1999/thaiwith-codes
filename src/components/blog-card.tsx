@@ -5,13 +5,14 @@ interface BlogCardInterface {
   width: number | number[]
   image: string
   heading: string
-  subtitle: string
+  subtitle: string,
+  borderRadius?: number | number[]
 }
 
-export function BlogCard({ width, image, heading, subtitle }: BlogCardInterface) {
+export function BlogCard({ width, image, heading, subtitle, borderRadius = 8 }: BlogCardInterface) {
   return (
-    <Card width={width} backgroundImage={`url(${image})`} backgroundSize='cover' borderRadius={8}>
-      <Card px={4} pb={4} pt={'45%'} color='white' bg='rgba(0,0,0,0.2)' borderRadius={8}>
+    <Card width={width} backgroundImage={`url(${image})`} backgroundSize='cover' borderRadius={borderRadius}>
+      <Card px={4} pb={4} pt={'45%'} color='white' bg='rgba(0,0,0,0.2)' borderRadius={borderRadius}>
         <Heading>{heading}</Heading>
         <Text fontSize={20}>{subtitle}</Text>
       </Card>

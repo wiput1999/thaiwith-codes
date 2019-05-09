@@ -9,7 +9,7 @@ export class More extends React.Component {
     return (
       <>
         <Flex alignItems='center'>
-          <Box mb={50} mx='auto' width={20 / 24}>
+          <Box mt={50} mb={50} mx='auto' width={20 / 24}>
             <Heading mb={4}>MORE</Heading>
             <Flex flexWrap='wrap'>
               <TileBlogCard

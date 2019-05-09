@@ -14,7 +14,7 @@ export default class CategoryPage extends React.Component {
     },
     {
       heading: 'Title',
-      image: 'https://storage.rayriffy.com/files/image/hayasaka.jpg',
+      image: 'https://storage.rayriffy.com/files/image/kaguya.jpg',
       subtitle: 'subtitle'
     }]
     return (
