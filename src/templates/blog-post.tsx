@@ -4,13 +4,21 @@ import Helmet from 'react-helmet'
 
 import { graphql } from 'gatsby'
 
-import { FluidObject } from 'gatsby-image'
+import Img, { FluidObject } from 'gatsby-image'
+import styled from 'styled-components'
 
-import { Box, Flex } from 'rebass'
+import { Box, Heading } from 'rebass'
 
 import { App } from '../components/app'
-import { BlogCard } from '../components/blog-card'
 
+const BgImage = styled(Img)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  height: 400px;
+`
 interface PropsInterface {
   location: {
     pathname: string
@@ -70,15 +78,18 @@ class BlogPostTemplate extends React.Component<PropsInterface> {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
-
+    const { banner, title } = this.props.data.markdownRemark.frontmatter
 
     return (
       <App>
         <Helmet title={post.frontmatter.title} />
-        <Flex>
-          <BlogCard width={1} borderRadius={0} heading={post.frontmatter.title} fluid={this.props.data.markdownRemark.frontmatter.banner.childImageSharp.fluid} />
-        </Flex>
-        <Box px={10} py={20}>
+        <div style={{ position: 'relative', background: 'rgba(0,0,0,0.3)' }}>
+          <BgImage fluid={banner.childImageSharp.fluid} />
+          <Box style={{ position: 'absolute', left: '3%', bottom: '5%' }}>
+            <Heading color='white' fontSize={42}>{title}</Heading>
+          </Box>
+        </div>
+        <Box px={[50, 150, 200, 250]} py={20}>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </Box>
       </App>

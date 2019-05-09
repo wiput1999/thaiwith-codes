@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { graphql, Link, StaticQuery } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
 
 import { FluidObject } from 'gatsby-image'
 

@@ -14,6 +14,12 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: `gatsby-plugin-google-fonts`,
+            options: {
+              fonts: [`niramit`, `kanit`],
+            },
+          },
+          {
             resolve: `@raae/gatsby-remark-oembed`,
             options: {
               usePrefix: true,

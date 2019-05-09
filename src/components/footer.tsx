@@ -60,7 +60,7 @@ export class Footer extends React.Component {
                 >
                   <TwitterTimelineEmbed
                     sourceType='profile'
-                    screenName='HitenKei'
+                    screenName='thaiwithcodes'
                     theme='dark'
                     options={{ height: 400 }}
                     noHeader={true}

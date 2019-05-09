@@ -1,10 +1,10 @@
 import Typography from 'typography'
 
 const typography = new Typography({
-  baseFontSize: '13px',
+  baseFontSize: '16px',
   baseLineHeight: 1.45,
-  bodyFontFamily: ['Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
-  headerFontFamily: ['Avenir Next', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif']
+  bodyFontFamily: ['Helvetica Neue', 'Niramit', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
+  headerFontFamily: ['Avenir Next', 'Kanit', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif']
 })
 
 // Hot reload typography in development.
