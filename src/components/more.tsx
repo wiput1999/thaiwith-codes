@@ -1,10 +1,19 @@
 import React from 'react'
 
+import { FluidObject } from 'gatsby-image'
+
 import { Box, Button, Card, Flex, Heading, Image, Link, Text } from 'rebass'
 
 import { TileBlogCard } from './blog-card'
 
-export class More extends React.Component {
+interface MoreInterface {
+  file: {
+    childImageSharp: {
+      fluid: FluidObject
+    }
+  }
+}
+export class More extends React.Component<MoreInterface> {
   public render() {
     return (
       <>
@@ -14,37 +23,37 @@ export class More extends React.Component {
             <Flex flexWrap='wrap'>
               <TileBlogCard
                 width={[1, 1 / 2]}
-                image='https://storage.rayriffy.com/files/image/hayasaka.jpg'
+                fluid={this.props.file.childImageSharp.fluid}
                 heading='Title'
                 subtitle='Subtitle'
               />
               <TileBlogCard
                 width={[1, 1 / 2]}
-                image='https://storage.rayriffy.com/files/image/hayasaka.jpg'
+                fluid={this.props.file.childImageSharp.fluid}
                 heading='Title'
                 subtitle='Subtitle'
               />
               <TileBlogCard
                 width={[1, 1 / 2]}
-                image='https://storage.rayriffy.com/files/image/hayasaka.jpg'
+                fluid={this.props.file.childImageSharp.fluid}
                 heading='Title'
                 subtitle='Subtitle'
               />
               <TileBlogCard
                 width={[1, 1 / 2]}
-                image='https://storage.rayriffy.com/files/image/hayasaka.jpg'
+                fluid={this.props.file.childImageSharp.fluid}
                 heading='Title'
                 subtitle='Subtitle'
               />
               <TileBlogCard
                 width={[1, 1 / 2]}
-                image='https://storage.rayriffy.com/files/image/hayasaka.jpg'
+                fluid={this.props.file.childImageSharp.fluid}
                 heading='Title'
                 subtitle='Subtitle'
               />
               <TileBlogCard
                 width={[1, 1 / 2]}
-                image='https://storage.rayriffy.com/files/image/hayasaka.jpg'
+                fluid={this.props.file.childImageSharp.fluid}
                 heading='Title'
                 subtitle='Subtitle'
               />

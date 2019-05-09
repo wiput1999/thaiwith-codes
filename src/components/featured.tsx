@@ -2,11 +2,21 @@ import React from 'react'
 import { Box, Flex, Heading } from 'rebass'
 import { BlogCard } from './blog-card'
 
-export class Featured extends React.Component {
+import { FluidObject } from 'gatsby-image'
+
+interface FeaturedInterface {
+  file: {
+    childImageSharp: {
+      fluid: FluidObject
+    }
+  }
+}
+
+export class Featured extends React.Component<FeaturedInterface> {
   public render() {
     const featured = {
       desc: 'very gud',
-      image: 'https://storage.rayriffy.com/files/image/hayasaka.jpg',
+      image: this.props.file,
       title: 'First Featured Article!!!!',
     }
     const featuredLists = [
@@ -41,15 +51,15 @@ export class Featured extends React.Component {
                 <BlogCard
                   heading={featured.title}
                   subtitle={featured.desc}
-                  image={featured.image}
+                  fluid={featured.image.childImageSharp.fluid}
                   width={1}
                   borderRadius={[0, 0, 8, 8]}
                 />
               </Box>
               <Box width={[1, 1, 1, 6 / 10]}>
                 <Flex flexWrap='wrap'>
-                  {featuredLists.map(list => (
-                    <Box width={12 / 24} px={[2, 5, 2, 5]} py={4}>
+                  {featuredLists.map((list, i) => (
+                    <Box width={12 / 24} px={[2, 5, 2, 5]} py={4} key={`featured-list-${i}`}>
                       <Heading>{list.title}</Heading>
                       {list.desc}
                     </Box>
