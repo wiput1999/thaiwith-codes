@@ -8,7 +8,6 @@ import { FluidObject } from 'gatsby-image'
 
 import { Box, Flex, Heading } from 'rebass'
 
-import { App } from '../components/app'
 import { BlogCard } from '../components/blog-card'
 
 interface CategoriesInterface {
@@ -34,7 +33,7 @@ export default class CategoriesPage extends React.Component<CategoriesInterface>
       subtitle: 'subtitle'
     }]
     return (
-      <App>
+      <>
         <Helmet title={`Categories`} />
         <Flex alignItems='center'>
           <Box mt={50} mb={50} mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
@@ -48,7 +47,7 @@ export default class CategoriesPage extends React.Component<CategoriesInterface>
             </Flex>
           </Box>
         </Flex>
-      </App>
+      </>
     )
   }
 }

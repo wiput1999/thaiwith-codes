@@ -6,6 +6,21 @@ import { TwitterTimelineEmbed } from 'react-twitter-embed'
 
 export class Footer extends React.Component {
   public render() {
+    const navLinks = [
+      {
+        href: '/',
+        name: 'Home',
+      },
+      {
+        href: '/categories',
+        name: 'Categories',
+      },
+      {
+        href: '/authors',
+        name: 'Authors',
+      }
+    ]
+
     return (
       <>
         <Flex alignItems='center' bg='#393a3a' mt={50}>
@@ -24,26 +39,13 @@ export class Footer extends React.Component {
                     MENU
                   </Heading>
                   <ul style={{ listStyle: 'none', margin: 0 }}>
-                    <li style={{ borderBottom: '#505152 1px solid', padding: '10px 10px 10px 12px' }}>
-                      <Link href='/' color='white' style={{ textDecoration: 'none' }}>
-                        Home
-                      </Link>
-                    </li>
-                    <li style={{ borderBottom: '#505152 1px solid', padding: '10px 10px 10px 12px' }}>
-                      <Link href='/' color='white' style={{ textDecoration: 'none' }}>
-                        About
-                      </Link>
-                    </li>
-                    <li style={{ borderBottom: '#505152 1px solid', padding: '10px 10px 10px 12px' }}>
-                      <Link href='/' color='white' style={{ textDecoration: 'none' }}>
-                        Catrgory
-                      </Link>
-                    </li>
-                    <li style={{ borderBottom: '#505152 1px solid', padding: '10px 10px 10px 12px' }}>
-                      <Link href='/' color='white' style={{ textDecoration: 'none' }}>
-                        Author
-                      </Link>
-                    </li>
+                    {navLinks.map(link => (
+                      <li style={{ borderBottom: '#505152 1px solid', padding: '10px 10px 10px 12px' }}>
+                        <Link href={link.href} color='white' style={{ textDecoration: 'none' }}>
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
                   </ul>
                 </Box>
               </Box>

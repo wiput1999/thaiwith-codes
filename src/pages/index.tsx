@@ -2,7 +2,6 @@ import React from 'react'
 
 import { graphql } from 'gatsby'
 
-import { App } from '../components/app'
 import { Featured } from '../components/featured'
 import { More } from '../components/more'
 
@@ -10,10 +9,10 @@ export default class MockPage extends React.Component {
   public render() {
     const { file } = this.props.data
     return (
-      <App>
+      <>
         <Featured file={file} />
         <More file={file} />
-      </App>
+      </>
     )
   }
 }

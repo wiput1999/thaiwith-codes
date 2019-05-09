@@ -4,8 +4,6 @@ import Helmet from 'react-helmet'
 
 import { graphql } from 'gatsby'
 
-import { App } from '../components/app'
-
 interface NotFoundPageProp {
   data: {
     site: {
@@ -25,11 +23,11 @@ class NotFoundPage extends React.Component<NotFoundPageProp> {
     const siteTitle = data.site.siteMetadata.title
 
     return (
-      <App>
+      <>
         <Helmet title={`Not Found`} />
         <h1>Not Found</h1>
         <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-      </App>
+      </>
     )
   }
 }
