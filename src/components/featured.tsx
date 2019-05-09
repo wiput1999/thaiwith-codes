@@ -30,11 +30,14 @@ export class Featured extends React.Component {
     return (
       <>
         <Flex alignItems='center'>
-          <Box mt={50} mx='auto' width={[1, 1, 20 / 24, 20 / 24]}>
+          <Box mx='auto' mt={50} width={20 / 24}>
+            <Heading mb={4}>FEATURED ARTICLES</Heading>
+          </Box>
+        </Flex>
+        <Flex alignItems='center'>
+          <Box mx='auto' width={[1, 1, 20 / 24, 20 / 24]}>
             <Flex flexWrap='wrap'>
-              <Box width={[1, 1, 1, 20 / 24]}>
-                <Heading mb={4}>FEATURED ARTICLES</Heading>
-              </Box>
+
               <Box width={[1, 1, 1, 4 / 10]}>
                 <BlogCard
                   heading={featured.title}
