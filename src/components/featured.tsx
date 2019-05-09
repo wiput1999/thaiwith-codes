@@ -17,19 +17,19 @@ export class Featured extends React.Component {
                 width={[1, 1, 4 / 10]}
               />
               <Flex flexWrap='wrap' width={[1, 1, 6 / 10]} px={20}>
-                <Box width={12 / 24} px={5} py={4}>
+                <Box width={12 / 24} px={[0, 0, 5]} py={4}>
                   <Heading>Title</Heading>
                   Desc
                 </Box>
-                <Box width={12 / 24} px={5} py={4}>
+                <Box width={12 / 24} px={[0, 0, 5]} py={4}>
                   <Heading>Title</Heading>
                   Desc
                 </Box>
-                <Box width={12 / 24} px={5} py={4}>
+                <Box width={12 / 24} px={[0, 0, 5]} py={4}>
                   <Heading>Title</Heading>
                   Desc
                 </Box>
-                <Box width={12 / 24} px={5} py={4}>
+                <Box width={12 / 24} px={[0, 0, 5]} py={4}>
                   <Heading>Title</Heading>
                   Desc
                 </Box>

@@ -11,7 +11,7 @@ export class Footer extends React.Component {
         <Flex alignItems='center' bg='#393a3a'>
           <Box mt={75} mb={50} mx='auto' color='white' width={18 / 24}>
             <Flex flexWrap='wrap'>
-              <Box px={5} mb={4} width={[1, 1, 1 / 2, 1 / 2]}>
+              <Box px={[0, 2, 5]} mb={4} width={[1, 1, 1 / 2, 1 / 2]}>
                 <Box>
                   <Heading fontSize={32} mb={20} fontWeight={600}>
                     thaiwith.codes
@@ -47,7 +47,7 @@ export class Footer extends React.Component {
                   </ul>
                 </Box>
               </Box>
-              <Box px={5} width={[1, 1, 1 / 2, 1 / 2]}>
+              <Box px={[0, 2, 5]} width={[1, 1, 1 / 2, 1 / 2]}>
                 <Heading fontSize={20} mb={20} fontWeight={600}>
                   TWEETS
                 </Heading>

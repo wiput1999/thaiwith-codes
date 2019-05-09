@@ -13,7 +13,7 @@ export class Nav extends React.Component {
         <Link href='/' p={2} px={3} style={{ textDecoration: 'none', fontSize: '15px' }} color='#000'>
           Home
         </Link>
-        <Link href='/' p={2} px={3} style={{ textDecoration: 'none', fontSize: '15px' }} color='#000'>
+        <Link href='/category' p={2} px={3} style={{ textDecoration: 'none', fontSize: '15px' }} color='#000'>
           Categories
         </Link>
         <Link href='/' p={2} px={3} style={{ textDecoration: 'none', fontSize: '15px' }} color='#000'>
