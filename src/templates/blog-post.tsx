@@ -1,6 +1,8 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 
+import { FluidObject } from 'gatsby-image'
+
 import { Box, Flex } from 'rebass'
 
 import { App } from '../components/app'
@@ -49,6 +51,11 @@ interface PropsInterface {
         date: string
         featured: boolean
         status: string
+        banner: {
+          childImageSharp: {
+            fluid: FluidObject
+          }
+        }
       }
       html: string
     }
@@ -61,10 +68,11 @@ class BlogPostTemplate extends React.Component<PropsInterface> {
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
+
     return (
       <App>
         <Flex>
-          <BlogCard width={1} borderRadius={0} heading={post.frontmatter.title} image={'https://storage.rayriffy.com/files/image/hayasaka.jpg'} />
+          <BlogCard width={1} borderRadius={0} heading={post.frontmatter.title} fluid={this.props.data.markdownRemark.frontmatter.banner.childImageSharp.fluid} />
         </Flex>
         <Box px={10} py={20}>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -91,7 +99,20 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
-        description
+        banner {
+          childImageSharp {
+            fluid(maxWidth: 1000, quality: 90) {
+              base64
+              tracedSVG
+              aspectRatio
+              src
+              srcSet
+              srcWebp
+              srcSetWebp
+              sizes
+            }
+          }
+        }
       }
     }
   }

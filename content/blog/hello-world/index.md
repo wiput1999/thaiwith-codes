@@ -1,6 +1,6 @@
 ---
 title: Hello World
-banner: ./banner.jpg
+banner: ./banner.png
 date: "2015-05-01T22:12:03.284Z"
 ---
 
