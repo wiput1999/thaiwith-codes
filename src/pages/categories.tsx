@@ -1,11 +1,25 @@
 import React from 'react'
 
+import { graphql } from 'gatsby'
+
+import { FluidObject } from 'gatsby-image'
+
 import { Box, Flex, Heading } from 'rebass'
 
 import { App } from '../components/app'
 import { BlogCard } from '../components/blog-card'
 
-export default class CategoryPage extends React.Component {
+interface CategoriesInterface {
+  data: {
+    file: {
+      childImageSharp: {
+        fluid: FluidObject
+      }
+    }
+  }
+}
+
+export default class CategoriesPage extends React.Component<CategoriesInterface> {
   public render() {
     const blogsMock = [{
       heading: 'Title',
@@ -25,7 +39,7 @@ export default class CategoryPage extends React.Component {
             <Flex flexWrap='wrap' width={1} px={20}>
               {blogsMock.map(blog => (
                 <Box width={[1, 1 / 2, 1 / 3, 1 / 3]} px={[0, 1, 2, 2]} py={[2, 0, 0, 0]}>
-                  <BlogCard heading={blog.heading} image={blog.image} subtitle={blog.subtitle} width={1} />
+                  <BlogCard heading={blog.heading} fluid={this.props.data.file.childImageSharp.fluid} subtitle={blog.subtitle} width={1} />
                 </Box>
               ))}
             </Flex>
@@ -35,3 +49,27 @@ export default class CategoryPage extends React.Component {
     )
   }
 }
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    file(relativePath: {eq: "hayasaka.jpg"}) {
+        childImageSharp {
+          fluid(maxWidth: 1000, quality: 90) {
+            base64
+            tracedSVG
+            aspectRatio
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+            sizes
+          }
+        }
+      }
+  }
+`
