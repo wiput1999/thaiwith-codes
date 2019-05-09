@@ -19,7 +19,8 @@ interface BlogCardInterface {
   fluid: FluidObject
   heading: string
   subtitle?: string,
-  borderRadius?: number | number[]
+  borderRadius?: number | number[],
+  slug?: string
 }
 
 export function BlogCard({ fluid, heading, subtitle, borderRadius = 8 }: BlogCardInterface) {
@@ -34,16 +35,20 @@ export function BlogCard({ fluid, heading, subtitle, borderRadius = 8 }: BlogCar
   )
 }
 
-export function TileBlogCard({ width, fluid, heading, subtitle }: BlogCardInterface) {
+export function TileBlogCard({ width, fluid, heading, slug, subtitle }: BlogCardInterface) {
   return (
     <Box width={width} px={20} py={10}>
       <Flex>
         <Box width={4 / 10}>
-          <Img fluid={fluid} style={{ borderRadius: '8px' }} />
+          <Link to={slug}><Img fluid={fluid} style={{ borderRadius: '8px' }} /></Link>
         </Box>
         <Box width={6 / 10} px={20}>
-          <Heading>{heading}</Heading>
-          {subtitle}
+          <Link to={slug}>
+            <Box>
+              <Heading>{heading}</Heading>
+              {subtitle}
+            </Box>
+          </Link>
         </Box>
       </Flex>
     </Box>

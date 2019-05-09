@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { graphql, StaticQuery } from 'gatsby'
+import { graphql, Link, StaticQuery } from 'gatsby'
 
 import { FluidObject } from 'gatsby-image'
 
@@ -66,6 +66,7 @@ export class More extends React.Component<MoreInterface> {
                       <Flex flexWrap='wrap'>
                         {data.allMarkdownRemark.edges.map(edge => (
                           <TileBlogCard
+                            slug={edge.node.fields.slug}
                             width={[1, 1 / 2]}
                             fluid={edge.node.frontmatter.banner.childImageSharp.fluid}
                             heading={edge.node.frontmatter.title}
