@@ -23,7 +23,7 @@ interface CategoriesInterface {
 export default class CategoriesPage extends React.Component<CategoriesInterface> {
   public render() {
     const blogsMock = [{
-      heading: 'Title',
+      heading: 'Category 1',
       image: 'https://storage.rayriffy.com/files/image/hayasaka.jpg',
       subtitle: 'subtitle'
     },
@@ -39,8 +39,8 @@ export default class CategoriesPage extends React.Component<CategoriesInterface>
           <Box mt={50} mb={50} mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
             <Heading mb={4}>CATEGORIES</Heading>
             <Flex flexWrap='wrap' width={1} px={20}>
-              {blogsMock.map(blog => (
-                <Box width={[1, 1 / 2, 1 / 3, 1 / 3]} px={[0, 1, 2, 2]} py={[2, 0, 0, 0]}>
+              {blogsMock.map((blog, i) => (
+                <Box width={[1, 1 / 2, 1 / 3, 1 / 3]} px={[0, 1, 2, 2]} py={[2, 0, 0, 0]} key={`category-${i}`}>
                   <BlogCard heading={blog.heading} fluid={this.props.data.file.childImageSharp.fluid} subtitle={blog.subtitle} width={1} />
                 </Box>
               ))}

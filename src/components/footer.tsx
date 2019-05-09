@@ -39,8 +39,8 @@ export class Footer extends React.Component {
                     MENU
                   </Heading>
                   <ul style={{ listStyle: 'none', margin: 0 }}>
-                    {navLinks.map(link => (
-                      <li style={{ borderBottom: '#505152 1px solid', padding: '10px 10px 10px 12px' }}>
+                    {navLinks.map((link, i) => (
+                      <li style={{ borderBottom: '#505152 1px solid', padding: '10px 10px 10px 12px' }} key={i}>
                         <Link href={link.href} color='white' style={{ textDecoration: 'none' }}>
                           {link.name}
                         </Link>
