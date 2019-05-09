@@ -15,29 +15,6 @@ interface FeaturedInterface {
 
 export class Featured extends React.Component<FeaturedInterface> {
   public render() {
-    const featured = {
-      desc: 'very gud',
-      image: this.props.file,
-      title: 'First Featured Article!!!!',
-    }
-    const featuredLists = [
-      {
-        desc: 'very long list',
-        title: 'title',
-      },
-      {
-        desc: 'very long list',
-        title: 'title',
-      },
-      {
-        desc: 'very long list',
-        title: 'title',
-      },
-      {
-        desc: 'very long list',
-        title: 'title',
-      },
-    ]
     return (
       <>
         <StaticQuery
@@ -102,12 +79,12 @@ export class Featured extends React.Component<FeaturedInterface> {
                       <Box width={[1, 1, 1, 6 / 10]}>
                         <Flex flexWrap='wrap'>
                           {featuredList.map((list, i) => (
-                            <Link to={list.node.fields.slug}>
-                              <Box width={12 / 24} px={[2, 5, 2, 5]} py={4} key={`featured-list-${i}`}>
+                            <Box width={1 / 2} px={[2, 5, 2, 5]} py={4} key={`featured-list-${i}`}>
+                              <Link to={list.node.fields.slug} style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.8)' }}>
                                 <Heading>{list.node.frontmatter.title}</Heading>
                                 {list.node.frontmatter.subtitle}
-                              </Box>
-                            </Link>
+                              </Link>
+                            </Box>
                           ))}
                         </Flex>
                       </Box>

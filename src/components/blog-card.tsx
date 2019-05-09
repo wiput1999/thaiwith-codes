@@ -44,7 +44,7 @@ export function TileBlogCard({ width, fluid, heading, slug, subtitle }: BlogCard
           <Link to={slug}><Img fluid={fluid} style={{ borderRadius: '8px' }} /></Link>
         </Box>
         <Box width={6 / 10} px={20}>
-          <Link to={slug} style={{textDecoration: 'none', color: 'rgba(0, 0, 0, 0.8)'}}>
+          <Link to={slug} style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.8)' }}>
             <Heading>{heading}</Heading>
             {subtitle}
           </Link>
