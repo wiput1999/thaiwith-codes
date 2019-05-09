@@ -37,7 +37,6 @@ export class Featured extends React.Component {
         <Flex alignItems='center'>
           <Box mx='auto' width={[1, 1, 20 / 24, 20 / 24]}>
             <Flex flexWrap='wrap'>
-
               <Box width={[1, 1, 1, 4 / 10]}>
                 <BlogCard
                   heading={featured.title}

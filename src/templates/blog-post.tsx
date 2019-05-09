@@ -3,8 +3,8 @@ import React from 'react'
 
 import { Box, Flex } from 'rebass'
 
+import { App } from '../components/app'
 import { BlogCard } from '../components/blog-card'
-import { Nav } from '../components/nav'
 
 interface PropsInterface {
   location: {
@@ -62,15 +62,14 @@ class BlogPostTemplate extends React.Component<PropsInterface> {
     const { previous, next } = this.props.pageContext
 
     return (
-      <>
-        <Nav />
-        <Flex pb={20}>
+      <App>
+        <Flex>
           <BlogCard width={1} borderRadius={0} heading={post.frontmatter.title} image={'https://storage.rayriffy.com/files/image/hayasaka.jpg'} />
         </Flex>
-        <Box px={10}>
+        <Box px={10} py={20}>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </Box>
-      </>
+      </App>
     )
   }
 }

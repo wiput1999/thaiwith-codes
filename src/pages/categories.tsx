@@ -2,8 +2,8 @@ import React from 'react'
 
 import { Box, Flex, Heading } from 'rebass'
 
+import { App } from '../components/app'
 import { BlogCard } from '../components/blog-card'
-import { Nav } from '../components/nav'
 
 export default class CategoryPage extends React.Component {
   public render() {
@@ -18,8 +18,7 @@ export default class CategoryPage extends React.Component {
       subtitle: 'subtitle'
     }]
     return (
-      <>
-        <Nav />
+      <App>
         <Flex alignItems='center'>
           <Box mt={50} mb={50} mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
             <Heading mb={4}>CATEGORIES</Heading>
@@ -32,7 +31,7 @@ export default class CategoryPage extends React.Component {
             </Flex>
           </Box>
         </Flex>
-      </>
+      </App>
     )
   }
 }
