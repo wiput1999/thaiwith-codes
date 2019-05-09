@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Helmet from 'react-helmet'
+
 import { graphql } from 'gatsby'
 
 import { FluidObject } from 'gatsby-image'
@@ -33,6 +35,7 @@ export default class CategoriesPage extends React.Component<CategoriesInterface>
     }]
     return (
       <App>
+        <Helmet title={`Categories`} />
         <Flex alignItems='center'>
           <Box mt={50} mb={50} mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
             <Heading mb={4}>CATEGORIES</Heading>

@@ -1,5 +1,8 @@
-import { graphql } from 'gatsby'
 import React from 'react'
+
+import Helmet from 'react-helmet'
+
+import { graphql } from 'gatsby'
 
 import { FluidObject } from 'gatsby-image'
 
@@ -71,6 +74,7 @@ class BlogPostTemplate extends React.Component<PropsInterface> {
 
     return (
       <App>
+        <Helmet title={post.frontmatter.title} />
         <Flex>
           <BlogCard width={1} borderRadius={0} heading={post.frontmatter.title} fluid={this.props.data.markdownRemark.frontmatter.banner.childImageSharp.fluid} />
         </Flex>
