@@ -20,11 +20,11 @@ export class Nav extends React.Component {
     ]
 
     return (
-      <Flex px={2} my={0} alignItems='center'>
+      <Flex px={2} mb={50} alignItems='center'>
         <Heading fontSize={28} mx={2} my={3} fontWeight={500}>
           thaiwith.codes
         </Heading>
-        <Box mx='auto' my={0} />
+        <Box mx='auto' />
         {navLinks.map((link, i) => (
           <Link href={link.href} p={2} px={3} style={{ textDecoration: 'none', fontSize: '15px' }} color='#000' key={`nav-${i}`}>
             {link.name}
