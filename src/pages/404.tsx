@@ -24,7 +24,7 @@ class NotFoundPage extends React.Component<NotFoundPageProp> {
     return (
       <>
         <Helmet title={`Not Found`} />
-        <Title title={`FEATURED ARTICLES`} />
+        <Title title={`NOT FOUND`} />
         <Flex alignItems='center'>
           <Box mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
             <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
