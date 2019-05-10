@@ -59,26 +59,28 @@ export class More extends React.Component<MoreInterface> {
         render={data => {
           return (
             <>
-              <Title title={`MORE`} />
               {data.allMarkdownRemark.edges.length === 0 ? null : (
-                <Flex alignItems='center'>
-                  <Box mt={50} mx='auto' width={20 / 24}>
-                    <Flex flexWrap='wrap'>
-                      {data.allMarkdownRemark.edges.map(edge => (
-                        <TileBlogCard
-                          slug={edge.node.fields.slug}
-                          width={[1, 1 / 2]}
-                          fluid={edge.node.frontmatter.banner.childImageSharp.fluid}
-                          heading={edge.node.frontmatter.title}
-                          subtitle={edge.node.frontmatter.subtitle}
-                        />
-                      ))}
-                    </Flex>
-                    <Flex justifyContent='center'>
-                      <Button>MORE</Button>
-                    </Flex>
-                  </Box>
-                </Flex>
+                <>
+                  <Title title={`MORE`} />
+                  <Flex alignItems='center'>
+                    <Box mt={50} mx='auto' width={20 / 24}>
+                      <Flex flexWrap='wrap'>
+                        {data.allMarkdownRemark.edges.map(edge => (
+                          <TileBlogCard
+                            slug={edge.node.fields.slug}
+                            width={[1, 1 / 2]}
+                            fluid={edge.node.frontmatter.banner.childImageSharp.fluid}
+                            heading={edge.node.frontmatter.title}
+                            subtitle={edge.node.frontmatter.subtitle}
+                          />
+                        ))}
+                      </Flex>
+                      <Flex justifyContent='center'>
+                        <Button>MORE</Button>
+                      </Flex>
+                    </Box>
+                  </Flex>
+                </>
               )}
             </>
           )
