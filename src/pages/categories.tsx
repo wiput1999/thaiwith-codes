@@ -41,7 +41,7 @@ export default class CategoriesPage extends React.Component<CategoriesInterface>
           </Box>
         </Flex>
         <Flex alignItems='center'>
-          <Box mt={50} mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
+          <Box mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
             <Flex flexWrap='wrap' width={1} px={20}>
               {blogsMock.map((blog, i) => (
                 <Box width={[1, 1 / 2, 1 / 3, 1 / 3]} px={[0, 1, 2, 2]} py={[2, 0, 0, 0]} key={`category-${i}`}>
