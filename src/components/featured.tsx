@@ -57,7 +57,7 @@ export class Featured extends React.Component<FeaturedInterface> {
           return (
             <>
               <Flex alignItems='center'>
-                <Box mx='auto' mt={50} width={20 / 24}>
+                <Box mt={50} mx='auto' width={20 / 24}>
                   <Heading mb={4}>FEATURED ARTICLES</Heading>
                 </Box>
               </Flex>
