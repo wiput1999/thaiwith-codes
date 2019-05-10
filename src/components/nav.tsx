@@ -24,7 +24,7 @@ export class Nav extends React.Component {
         <Heading fontSize={28} mx={2} my={3} fontWeight={500}>
           thaiwith.codes
         </Heading>
-        <Box mx='auto' />
+        <Box mx='auto' mb={50} />
         {navLinks.map((link, i) => (
           <Link href={link.href} p={2} px={3} style={{ textDecoration: 'none', fontSize: '15px' }} color='#000' key={`nav-${i}`}>
             {link.name}
