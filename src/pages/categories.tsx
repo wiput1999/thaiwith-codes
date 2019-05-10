@@ -6,9 +6,10 @@ import { graphql } from 'gatsby'
 
 import { FluidObject } from 'gatsby-image'
 
-import { Box, Flex, Heading } from 'rebass'
+import { Box, Flex } from 'rebass'
 
 import { BlogCard } from '../components/blog-card'
+import { Title } from '../components/title'
 
 interface CategoriesInterface {
   data: {
@@ -35,11 +36,7 @@ export default class CategoriesPage extends React.Component<CategoriesInterface>
     return (
       <>
         <Helmet title={`Categories`} />
-        <Flex alignItems='center'>
-          <Box mx='auto' width={20 / 24}>
-            <Heading mb={4}>CATEGORIES</Heading>
-          </Box>
-        </Flex>
+        <Title title={`CATEGORIES`} />
         <Flex alignItems='center'>
           <Box mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
             <Flex flexWrap='wrap' width={1} px={20}>

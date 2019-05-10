@@ -2,7 +2,9 @@ import React from 'react'
 
 import Helmet from 'react-helmet'
 
-import { Box, Flex, Heading } from 'rebass'
+import { Title } from '../components/title'
+
+import { Box, Flex } from 'rebass'
 
 interface NotFoundPageProp {
   data: {
@@ -22,11 +24,7 @@ class NotFoundPage extends React.Component<NotFoundPageProp> {
     return (
       <>
         <Helmet title={`Not Found`} />
-        <Flex alignItems='center'>
-          <Box mx='auto' width={20 / 24}>
-            <Heading mb={4}>NOT FOUND</Heading>
-          </Box>
-        </Flex>
+        <Title title={`FEATURED ARTICLES`} />
         <Flex alignItems='center'>
           <Box mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
             <p>You just hit a route that doesn&#39;t exist... the sadness.</p>

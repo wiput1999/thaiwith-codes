@@ -1,6 +1,8 @@
 import React from 'react'
 import { Box, Flex, Heading } from 'rebass'
+
 import { BlogCard } from './blog-card'
+import { Title } from './title'
 
 import { graphql, Link, StaticQuery } from 'gatsby'
 import { FluidObject } from 'gatsby-image'
@@ -56,11 +58,7 @@ export class Featured extends React.Component<FeaturedInterface> {
           const featuredList = data.allMarkdownRemark.edges.slice(1, 5)
           return (
             <>
-              <Flex alignItems='center'>
-                <Box mx='auto' width={20 / 24}>
-                  <Heading mb={4}>FEATURED ARTICLES</Heading>
-                </Box>
-              </Flex>
+              <Title title={`FEATURED ARTICLES`} />
               <Flex alignItems='center'>
                 <Box mx='auto' width={[1, 1, 20 / 24, 20 / 24]}>
                   <Flex flexWrap='wrap'>

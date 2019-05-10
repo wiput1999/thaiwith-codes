@@ -4,9 +4,10 @@ import { graphql, StaticQuery } from 'gatsby'
 
 import { FluidObject } from 'gatsby-image'
 
-import { Box, Button, Flex, Heading } from 'rebass'
+import { Box, Button, Flex } from 'rebass'
 
 import { TileBlogCard } from './blog-card'
+import { Title } from './title'
 
 interface MoreInterface {
   file: {
@@ -58,10 +59,10 @@ export class More extends React.Component<MoreInterface> {
         render={data => {
           return (
             <>
+              <Title title={`MORE`} />
               {data.allMarkdownRemark.edges.length === 0 ? null : (
                 <Flex alignItems='center'>
                   <Box mt={50} mx='auto' width={20 / 24}>
-                    <Heading mb={4}>MORE</Heading>
                     <Flex flexWrap='wrap'>
                       {data.allMarkdownRemark.edges.map(edge => (
                         <TileBlogCard
