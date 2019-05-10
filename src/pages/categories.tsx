@@ -36,7 +36,7 @@ export default class CategoriesPage extends React.Component<CategoriesInterface>
       <>
         <Helmet title={`Categories`} />
         <Flex alignItems='center'>
-          <Box mt={50} mb={50} mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
+          <Box mt={50} mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
             <Heading mb={4}>CATEGORIES</Heading>
             <Flex flexWrap='wrap' width={1} px={20}>
               {blogsMock.map((blog, i) => (
