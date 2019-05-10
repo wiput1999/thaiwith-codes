@@ -1,11 +1,22 @@
 import React from 'react'
 
 import { graphql } from 'gatsby'
+import { FluidObject } from 'gatsby-image'
 
 import { Featured } from '../components/featured'
 import { More } from '../components/more'
 
-export default class MockPage extends React.Component {
+interface IndexPageInterface {
+  data: {
+    file: {
+      childImageSharp: {
+        fluid: FluidObject
+      }
+    }
+  }
+}
+
+export default class IndexPage extends React.Component<IndexPageInterface> {
   public render() {
     const { file } = this.props.data
     return (
@@ -19,11 +30,6 @@ export default class MockPage extends React.Component {
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     file(relativePath: {eq: "hayasaka.jpg"}) {
         childImageSharp {
           fluid(maxWidth: 1000, quality: 90) {

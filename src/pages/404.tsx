@@ -2,8 +2,6 @@ import React from 'react'
 
 import Helmet from 'react-helmet'
 
-import { graphql } from 'gatsby'
-
 import { Box, Flex, Heading } from 'rebass'
 
 interface NotFoundPageProp {
@@ -21,9 +19,6 @@ interface NotFoundPageProp {
 
 class NotFoundPage extends React.Component<NotFoundPageProp> {
   public render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-
     return (
       <>
         <Helmet title={`Not Found`} />
@@ -39,13 +34,3 @@ class NotFoundPage extends React.Component<NotFoundPageProp> {
 }
 
 export default NotFoundPage
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`

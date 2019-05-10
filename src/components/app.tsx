@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { graphql, StaticQuery } from 'gatsby'
+
 import Helmet from 'react-helmet'
 
 import { Footer } from './footer'
@@ -10,10 +12,27 @@ export class App extends React.Component {
     const { children } = this.props
     return (
       <>
-        <Helmet defaultTitle="thaiwith.codes" titleTemplate="%s · thaiwith.codes" />
-        <Nav />
-        {children}
-        <Footer />
+        <StaticQuery
+          query={graphql`
+            query {
+              site {
+                siteMetadata {
+                  title
+                }
+              }
+            }
+          `}
+          render={data => {
+            return (
+              <>
+                <Helmet defaultTitle={`${data.site.siteMetadata.title}`} titleTemplate={`%s · ${data.site.siteMetadata.title}`} />
+                <Nav />
+                {children}
+                <Footer />
+              </>
+            )
+          }}
+        />
       </>
     )
   }

@@ -74,8 +74,7 @@ interface PropsInterface {
 class BlogPostTemplate extends React.Component<PropsInterface> {
   public render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+    // const { previous, next } = this.props.pageContext
     const { banner, title } = this.props.data.markdownRemark.frontmatter
 
     return (
@@ -99,12 +98,6 @@ export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)

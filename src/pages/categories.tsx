@@ -54,11 +54,6 @@ export default class CategoriesPage extends React.Component<CategoriesInterface>
 
 export const pageQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     file(relativePath: {eq: "hayasaka.jpg"}) {
         childImageSharp {
           fluid(maxWidth: 1000, quality: 90) {
