@@ -23,8 +23,12 @@ class NotFoundPage extends React.Component<NotFoundPageProp> {
       <>
         <Helmet title={`Not Found`} />
         <Flex alignItems='center'>
-          <Box mt={50} mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
+          <Box mt={50} mx='auto' width={20 / 24}>
             <Heading mb={4}>NOT FOUND</Heading>
+          </Box>
+        </Flex>
+        <Flex alignItems='center'>
+          <Box mt={50} mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
             <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
           </Box>
         </Flex>
