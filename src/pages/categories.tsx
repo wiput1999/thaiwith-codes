@@ -36,7 +36,7 @@ export default class CategoriesPage extends React.Component<CategoriesInterface>
       <>
         <Helmet title={`Categories`} />
         <Flex alignItems='center'>
-          <Box mt={50} mx='auto' width={20 / 24}>
+          <Box mx='auto' width={20 / 24}>
             <Heading mb={4}>CATEGORIES</Heading>
           </Box>
         </Flex>
