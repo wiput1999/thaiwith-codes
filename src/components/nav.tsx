@@ -20,7 +20,7 @@ export class Nav extends React.Component {
     ]
 
     return (
-      <Flex px={2} mb={50} alignItems='center'>
+      <Flex px={2} alignItems='center'>
         <Heading fontSize={28} mx={2} my={3} fontWeight={500}>
           thaiwith.codes
         </Heading>
