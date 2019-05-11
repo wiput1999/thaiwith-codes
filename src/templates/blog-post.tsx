@@ -80,7 +80,7 @@ class BlogPostTemplate extends React.Component<PropsInterface> {
     const { banner, title } = this.props.data.markdownRemark.frontmatter
 
     return (
-      <>
+      <App>
         <Helmet title={post.frontmatter.title} />
         <div style={{ position: 'relative', background: 'rgba(0,0,0,0.3)' }}>
           <BgImage fluid={banner.childImageSharp.fluid} />
@@ -91,7 +91,7 @@ class BlogPostTemplate extends React.Component<PropsInterface> {
         <Box px={[50, 150, 200, 250]} py={20}>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </Box>
-      </>
+      </App>
     )
   }
 }

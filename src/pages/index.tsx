@@ -21,10 +21,10 @@ export default class IndexPage extends React.Component<IndexPageInterface> {
   public render() {
     const { file } = this.props.data
     return (
-      <>
+      <App>
         <Featured file={file} />
         <More file={file} />
-      </>
+      </App>
     )
   }
 }
