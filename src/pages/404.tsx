@@ -2,6 +2,7 @@ import React from 'react'
 
 import Helmet from 'react-helmet'
 
+import { App } from '../components/app'
 import { Title } from '../components/title'
 
 import { Box, Flex } from 'rebass'
@@ -22,7 +23,7 @@ interface NotFoundPageProp {
 class NotFoundPage extends React.Component<NotFoundPageProp> {
   public render() {
     return (
-      <>
+      <App>
         <Helmet title={`Not Found`} />
         <Title title={`NOT FOUND`} />
         <Flex alignItems='center'>
@@ -30,7 +31,7 @@ class NotFoundPage extends React.Component<NotFoundPageProp> {
             <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
           </Box>
         </Flex>
-      </>
+      </App>
     )
   }
 }

@@ -3,6 +3,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { FluidObject } from 'gatsby-image'
 
+import { App } from '../components/app'
 import { Featured } from '../components/featured'
 import { More } from '../components/more'
 
@@ -20,10 +21,10 @@ export default class IndexPage extends React.Component<IndexPageInterface> {
   public render() {
     const { file } = this.props.data
     return (
-      <>
+      <App>
         <Featured file={file} />
         <More file={file} />
-      </>
+      </App>
     )
   }
 }
