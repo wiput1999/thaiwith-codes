@@ -2,6 +2,7 @@
 title: Hello World สวัสดีวันอังคาร์
 subtitle: some subtitle
 banner: ./banner.png
+category: News
 date: "2015-04-01T22:12:03.284Z"
 ---
 

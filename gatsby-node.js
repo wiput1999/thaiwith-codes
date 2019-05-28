@@ -1,11 +1,14 @@
+const _ = require('lodash')
 const path = require(`path`)
 const {createFilePath} = require(`gatsby-source-filesystem`)
 
-exports.createPages = ({graphql, actions}) => {
+exports.createPages = async ({graphql, actions}) => {
   const {createPage} = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
-  return graphql(
+  const blogCategory = path.resolve(`./src/templates/blog-categories.tsx`)
+
+  const result = await graphql(
     `
       {
         allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 1000) {
@@ -16,37 +19,82 @@ exports.createPages = ({graphql, actions}) => {
               }
               frontmatter {
                 title
+                category
+                banner {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
+                }
               }
             }
           }
         }
       }
     `,
-  ).then(result => {
-    if (result.errors) {
-      throw result.errors
-    }
+  )
 
-    // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges
+  if (result.errors) {
+    throw result.errors
+  }
 
-    posts.forEach((post, index) => {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node
-      const next = index === 0 ? null : posts[index - 1].node
+  const posts = result.data.allMarkdownRemark.edges
 
-      createPage({
-        path: post.node.fields.slug,
-        component: blogPost,
-        context: {
-          slug: post.node.fields.slug,
-          previous,
-          next,
-        },
-      })
+  // Create blog posts
+
+  posts.map((post, i) => {
+    const previous = i === posts.length - 1 ? null : posts[i + 1].node
+    const next = i === 0 ? null : posts[i - 1].node
+
+    createPage({
+      path: post.node.fields.slug,
+      component: blogPost,
+      context: {
+        slug: post.node.fields.slug,
+        previous,
+        next,
+      },
     })
-
-    return null
   })
+
+  // Fetch all unique categories
+
+  const categories = []
+
+  posts.map(post => {
+    post.node.frontmatter.category.split(',').map(cat => {
+      const catTrim = _.trim(cat)
+      const catKey = _.toLower(catTrim)
+
+      if (_.isEmpty(_.filter(categories, o => o.key === catKey))) {
+        categories.push({
+          key: catKey,
+          name: catTrim,
+          banner: post.node.frontmatter.banner
+        })
+      }
+    })
+  })
+
+  // Create category page
+
+  createPage({
+    path: '/categories',
+    component: blogCategory,
+    context: {
+      categories: _.sortBy(categories, o => o.key)
+    },
+  })
+
+  return null
 }
 
 exports.onCreateNode = ({node, actions, getNode}) => {
