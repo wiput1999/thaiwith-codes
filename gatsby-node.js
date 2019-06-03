@@ -1,9 +1,9 @@
 const _ = require('lodash')
 const path = require(`path`)
-const {createFilePath} = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.createPages = async ({graphql, actions}) => {
-  const {createPage} = actions
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
   const categoryList = path.resolve(`./src/templates/categories-list.tsx`)
@@ -108,45 +108,48 @@ exports.createPages = async ({graphql, actions}) => {
 
   // Create author pages
 
-  // _.each(authors, async author => {
-  //   const authorResult = await graphql(
-  //     `
-  //       {
-  //         blogs: allMarkdownRemark(
-  //           filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
-  //         ) {
-  //           edges {
-  //             node {
-  //               frontmatter {
-  //                 title
-  //               }
-  //             }
-  //           }
-  //         }
-  //       }
-  //     `
-  //   )
+  let postsPerPage = 12
+  let authorPathPrefix = '/author/'
 
-  //   let totalCount = authorResult.data.blogs.edges.length
+  _.each(authors, async author => {
+    const authorResult = await graphql(
+      `
+        {
+          blogs: allMarkdownRemark(
+            filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
+          ) {
+            edges {
+              node {
+                frontmatter {
+                  title
+                }
+              }
+            }
+          }
+        }
+      `
+    )
 
-  //   let authorPages = Math.ceil(totalCount / postsPerPage)
-  //   let pathPrefix = authorPathPrefix + author.node.user
-  //   _.times(authorPages, i => {
-  //     createPage({
-  //       path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-  //       component: path.resolve('./src/templates/author-blog.tsx'),
-  //       context: {
-  //         author: author.node.user,
-  //         currentPage: i + 1,
-  //         limit: postsPerPage,
-  //         numPages: authorPages,
-  //         pathPrefix,
-  //         regex: `/${author.node.user}/`,
-  //         skip: i * postsPerPage,
-  //       },
-  //     })
-  //   })
-  // })
+    let totalCount = authorResult.data.blogs.edges.length
+
+    let authorPages = Math.ceil(totalCount / postsPerPage)
+    let pathPrefix = authorPathPrefix + author.node.user
+    _.times(authorPages, i => {
+      createPage({
+        path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
+        component: path.resolve('./src/templates/authors-posts.tsx'),
+        context: {
+          author: author.node.user,
+          currentPage: i + 1,
+          limit: postsPerPage,
+          numPages: authorPages,
+          pathPrefix,
+          regex: `/${author.node.user}/`,
+          skip: i * postsPerPage,
+        },
+      })
+    })
+  })
 
   // Create author list page
   const authorRaw = []
@@ -200,11 +203,11 @@ exports.createPages = async ({graphql, actions}) => {
   return null
 }
 
-exports.onCreateNode = ({node, actions, getNode}) => {
-  const {createNodeField} = actions
+exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
 
   if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({node, getNode})
+    const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
       node,
