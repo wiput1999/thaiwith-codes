@@ -8,6 +8,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
   const categoryList = path.resolve(`./src/templates/categories-list.tsx`)
   const authorList = path.resolve(`./src/templates/authors-list.tsx`)
+  const categoryPost = path.resolve(`./src/templates/categories-post.tsx`)
+  const authorPost = path.resolve(`./src/templates/authors-post.tsx`)
 
   const result = await graphql(
     `
@@ -137,7 +139,7 @@ exports.createPages = async ({ graphql, actions }) => {
     _.times(authorPages, i => {
       createPage({
         path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-        component: path.resolve('./src/templates/authors-posts.tsx'),
+        component: authorPost,
         context: {
           author: author.node.user,
           currentPage: i + 1,
