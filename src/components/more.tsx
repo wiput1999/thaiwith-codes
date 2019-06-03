@@ -14,19 +14,19 @@ interface DataInterface {
     edges: {
       node: {
         fields: {
-          slug: string,
+          slug: string
         },
         frontmatter: {
           title: string,
           subtitle: string,
           banner: {
             childImageSharp: {
-              fluid: FluidObject,
-            },
-          },
-        },
-      },
-    }[],
+              fluid: FluidObject
+            }
+          }
+        }
+      }
+    }[]
   },
 }
 
