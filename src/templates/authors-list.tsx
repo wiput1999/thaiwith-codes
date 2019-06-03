@@ -28,7 +28,7 @@ interface CategoriesInterface {
 }
 
 export default class AuthorsListPage extends React.Component<CategoriesInterface> {
-  public render() {
+  public render () {
     const { authors = [] } = this.props.pageContext
 
     return (

@@ -8,7 +8,7 @@ import { Footer } from './footer'
 import { Nav } from './nav'
 
 export class App extends React.Component {
-  public render() {
+  public render () {
     const { children } = this.props
     return (
       <StaticQuery

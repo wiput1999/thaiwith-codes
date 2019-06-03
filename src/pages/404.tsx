@@ -21,7 +21,7 @@ interface NotFoundPageProp {
 }
 
 class NotFoundPage extends React.Component<NotFoundPageProp> {
-  public render() {
+  public render () {
     return (
       <App>
         <Helmet title={`Not Found`} />

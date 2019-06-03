@@ -18,7 +18,7 @@ interface IndexPageInterface {
 }
 
 export default class IndexPage extends React.Component<IndexPageInterface> {
-  public render() {
+  public render () {
     const { file } = this.props.data
     return (
       <App>

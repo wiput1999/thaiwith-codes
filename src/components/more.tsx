@@ -31,7 +31,7 @@ interface DataInterface {
 }
 
 export class More extends React.Component {
-  public render() {
+  public render () {
     return (
       <StaticQuery
         query={graphql`
@@ -86,6 +86,7 @@ export class More extends React.Component {
                             fluid={edge.node.frontmatter.banner.childImageSharp.fluid}
                             heading={edge.node.frontmatter.title}
                             subtitle={edge.node.frontmatter.subtitle}
+                            key={`more-card-${edge.node.fields.slug}`}
                           />
                         ))}
                       </Flex>

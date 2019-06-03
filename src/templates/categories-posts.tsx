@@ -27,7 +27,7 @@ interface CategoriesInterface {
 }
 
 export default class CategoriesPage extends React.Component<CategoriesInterface> {
-  public render() {
+  public render () {
     const { categories = [] } = this.props.pageContext
 
     return (
