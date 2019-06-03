@@ -2,6 +2,7 @@
 title: Hello World สวัสดีวันจันทร์
 subtitle: T R I G G E R E D
 banner: ./banner.png
+author: rayriffy
 category: Tutorial, NSFW
 date: "2015-05-01T22:12:03.284Z"
 ---

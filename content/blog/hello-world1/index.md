@@ -1,10 +1,10 @@
 ---
-title: Hello World สวัสดีวันอังคาร์
+title: Hello World สวัสดีวันอังคาร
 subtitle: some subtitle
 banner: ./banner.png
+author: rayriffy
 category: News
 date: "2015-04-01T22:12:03.284Z"
-author: rayriffy
 ---
 
 สวัสดีวันจันทร์
