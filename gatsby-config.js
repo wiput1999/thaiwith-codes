@@ -25,6 +25,13 @@ module.exports = {
         name: `assets`,
       },
     },
+    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/database`,
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -49,7 +56,6 @@ module.exports = {
             options: {
               maxWidth: 1000,
               linkImagesToOriginal: false,
-              sizeByPixelDensity: true,
               withWebp: true,
               quality: 80,
             },

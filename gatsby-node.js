@@ -6,7 +6,8 @@ exports.createPages = async ({graphql, actions}) => {
   const {createPage} = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
-  const blogCategory = path.resolve(`./src/templates/blog-categories.tsx`)
+  const categoryList = path.resolve(`./src/templates/categories-list.tsx`)
+  const authorList = path.resolve(`./src/templates/authors-list.tsx`)
 
   const result = await graphql(
     `
@@ -38,6 +39,16 @@ exports.createPages = async ({graphql, actions}) => {
             }
           }
         }
+        allAuthorsJson {
+          edges {
+            node {
+              user
+              name
+              facebook
+              twitter
+            }
+          }
+        }
       }
     `,
   )
@@ -47,6 +58,7 @@ exports.createPages = async ({graphql, actions}) => {
   }
 
   const posts = result.data.allMarkdownRemark.edges
+  const authors = result.data.allAuthorsJson.edges
 
   // Create blog posts
 
@@ -88,9 +100,100 @@ exports.createPages = async ({graphql, actions}) => {
 
   createPage({
     path: '/categories',
-    component: blogCategory,
+    component: categoryList,
     context: {
       categories: _.sortBy(categories, o => o.key)
+    },
+  })
+
+  // Create author pages
+
+  // _.each(authors, async author => {
+  //   const authorResult = await graphql(
+  //     `
+  //       {
+  //         blogs: allMarkdownRemark(
+  //           filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
+  //         ) {
+  //           edges {
+  //             node {
+  //               frontmatter {
+  //                 title
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     `
+  //   )
+
+  //   let totalCount = authorResult.data.blogs.edges.length
+
+  //   let authorPages = Math.ceil(totalCount / postsPerPage)
+  //   let pathPrefix = authorPathPrefix + author.node.user
+  //   _.times(authorPages, i => {
+  //     createPage({
+  //       path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
+  //       component: path.resolve('./src/templates/author-blog.tsx'),
+  //       context: {
+  //         author: author.node.user,
+  //         currentPage: i + 1,
+  //         limit: postsPerPage,
+  //         numPages: authorPages,
+  //         pathPrefix,
+  //         regex: `/${author.node.user}/`,
+  //         skip: i * postsPerPage,
+  //       },
+  //     })
+  //   })
+  // })
+
+  // Create author list page
+  const authorRaw = []
+  const authorPromise = []
+
+  const fetchAuthor = async author => {
+    const authorResult = await graphql(
+      `
+        {
+          author: file(relativePath: {eq: "${author.node.user}.jpg"}) {
+            childImageSharp {
+              fluid(maxWidth: 1000, quality: 90) {
+                base64
+                tracedSVG
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+            }
+          }
+        }
+      `
+    )
+
+    return authorRaw.push({
+      user: author.node.user,
+      name: author.node.name,
+      facebook: author.node.facebook,
+      twitter: author.node.twitter,
+      banner: authorResult.data.author,
+    })
+  }
+
+  _.each(authors, author => {
+    authorPromise.push(fetchAuthor(author))
+  })
+
+  await Promise.all(authorPromise)
+
+  createPage({
+    path: '/authors',
+    component: authorList,
+    context: {
+      authors: authorRaw,
     },
   })
 
