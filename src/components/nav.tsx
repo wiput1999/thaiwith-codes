@@ -16,7 +16,7 @@ export class Nav extends React.Component {
       {
         href: '/authors',
         name: 'Authors',
-      }
+      },
     ]
 
     return (

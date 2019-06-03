@@ -18,7 +18,7 @@ export class Footer extends React.Component {
       {
         href: '/authors',
         name: 'Authors',
-      }
+      },
     ]
 
     return (
@@ -57,7 +57,7 @@ export class Footer extends React.Component {
                   style={{
                     border: '#505152 solid 1px',
                     borderRadius: '10px',
-                    marginTop: '20px'
+                    marginTop: '20px',
                   }}
                 >
                   <TwitterTimelineEmbed
