@@ -72,6 +72,7 @@
     "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-react": "^7.12.4",
     "graphql": "^14.2.1",
+    "husky": "^2.3.0",
     "prettier": "^1.17.0",
     "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
@@ -82,6 +83,12 @@
     "typescript": "^3.4.4"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn format && yarn lint",
+      "pre-push": "yarn lint"
+    }
+  },
   "keywords": [
     "gatsby"
   ],
@@ -103,7 +110,6 @@
     "start": "yarn dev",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "type-check": "tsc --noEmit",
-    "validate": "yarn lint"
+    "type-check": "tsc --noEmit"
   }
 }
