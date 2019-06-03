@@ -9,14 +9,28 @@ import { Box, Button, Flex } from 'rebass'
 import { TileBlogCard } from './blog-card'
 import { Title } from './title'
 
-interface MoreInterface {
-  file: {
-    childImageSharp: {
-      fluid: FluidObject
-    }
-  }
+interface DataInterface {
+  allMarkdownRemark: {
+    edges: {
+      node: {
+        fields: {
+          slug: string,
+        },
+        frontmatter: {
+          title: string,
+          subtitle: string,
+          banner: {
+            childImageSharp: {
+              fluid: FluidObject,
+            },
+          },
+        },
+      },
+    }[],
+  },
 }
-export class More extends React.Component<MoreInterface> {
+
+export class More extends React.Component {
   public render() {
     return (
       <StaticQuery
@@ -56,7 +70,7 @@ export class More extends React.Component<MoreInterface> {
             }
           }
         `}
-        render={data => {
+        render={(data: DataInterface) => {
           return (
             <>
               {data.allMarkdownRemark.edges.length === 0 ? null : (
