@@ -2,6 +2,7 @@ import React from 'react'
 
 import Helmet from 'react-helmet'
 
+import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
 
 import { FluidObject } from 'gatsby-image'
@@ -26,7 +27,7 @@ interface CategoriesInterface {
   }
 }
 
-export default class CategoriesPage extends React.Component<CategoriesInterface> {
+export default class CategoriesListPage extends React.Component<CategoriesInterface> {
   public render() {
     const { categories = [] } = this.props.pageContext
 
@@ -39,7 +40,9 @@ export default class CategoriesPage extends React.Component<CategoriesInterface>
             <Flex flexWrap='wrap' width={1} px={20}>
               {categories.map((category, i) => (
                 <Box width={[1, 1 / 2, 1 / 3, 1 / 3]} px={[0, 1, 2, 2]} py={[2, 0, 0, 0]} key={`category-${i}`}>
-                  <BlogCard heading={category.name} fluid={category.banner.childImageSharp.fluid} width={1} />
+                  <Link to={`category/${category.name.toLowerCase()}`}>
+                    <BlogCard heading={category.name} fluid={category.banner.childImageSharp.fluid} width={1} />
+                  </Link>
                 </Box>
               ))}
             </Flex>
