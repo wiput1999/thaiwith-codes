@@ -9,7 +9,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const categoryList = path.resolve(`./src/templates/categories-list.tsx`)
   const authorList = path.resolve(`./src/templates/authors-list.tsx`)
   const categoryPost = path.resolve(`./src/templates/categories-post.tsx`)
-  const authorPost = path.resolve(`./src/templates/authors-post.tsx`)
+  const authorPost = path.resolve(`./src/templates/authors-posts.tsx`)
 
   const result = await graphql(
     `
