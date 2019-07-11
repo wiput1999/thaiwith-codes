@@ -1,8 +1,8 @@
 ---
-title: Hello World สวัสดีวันจันทร์
+title: Hello World สวัสดีวันพุธ
 subtitle: T R I G G E R E D
 banner: ./banner.png
-author: wiput
+author: phoomparin
 category: Tutorial, NSFW
 date: '2015-05-01T22:12:03.284Z'
 ---

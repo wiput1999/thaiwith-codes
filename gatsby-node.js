@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
   const categoryList = path.resolve(`./src/templates/categories-list.tsx`)
   const authorList = path.resolve(`./src/templates/authors-list.tsx`)
-  const categoryPost = path.resolve(`./src/templates/categories-post.tsx`)
+  const categoryPost = path.resolve(`./src/templates/categories-posts.tsx`)
   const authorPost = path.resolve(`./src/templates/authors-posts.tsx`)
 
   const result = await graphql(
@@ -98,6 +98,8 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  let postsPerPage = 12
+
   // Create category page
 
   createPage({
@@ -108,9 +110,75 @@ exports.createPages = async ({ graphql, actions }) => {
     },
   })
 
+  // Create category blog listing page
+  const categoryBlogRaw = []
+
+  const fetchCategoryBlog = async category => {
+    const categoryResult = await graphql(`
+      {
+        blogs: allMarkdownRemark(
+          sort: {fields: [frontmatter___date], order: DESC}
+          filter: {frontmatter: {category: {regex: "/${category.name}/"}}}
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                subtitle
+                author
+                banner {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `)
+
+    return categoryBlogRaw.push({
+      category,
+      raw: categoryResult.data,
+    })
+  }
+
+  await Promise.all(categories.map(category => fetchCategoryBlog(category)))
+
+  categoryBlogRaw.map(o => {
+    const categoryListingPages = Math.ceil(o.raw.blogs.edges.length / postsPerPage)
+
+    _.times(categoryListingPages, i => createPage({
+      path: i === 0 ? `/category/${o.category.key}` : `/category/${o.category.key}/pages/${i + 1}`,
+      component: categoryPost,
+      context: {
+        pathPrefix: `/category/${o.category.key}`,
+        category: o.category,
+        query: o.category.key,
+        currentPage: i + 1,
+        numPages: categoryListingPages,
+        regex: `/${o.category.name}/`,
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+      },
+    }))
+  })
+
   // Create author pages
 
-  let postsPerPage = 12
   let authorPathPrefix = '/author/'
 
   _.each(authors, async author => {
@@ -198,7 +266,7 @@ exports.createPages = async ({ graphql, actions }) => {
     path: '/authors',
     component: authorList,
     context: {
-      authors: authorRaw,
+      authors: _.sortBy(authorRaw, o => o.name),
     },
   })
 
