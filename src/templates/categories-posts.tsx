@@ -13,36 +13,44 @@ import {BlogCard} from '../components/blog-card'
 import {Title} from '../components/title'
 
 interface IProps {
+  data: {
+    allMarkdownRemark: {
+      edges: {
+        node: {
+          fields: {
+            slug: string
+          }
+          frontmatter: {
+            title: string
+            subtitle: string
+            banner: {
+              childImageSharp: {
+                fluid: FluidObject
+              }
+            }
+          }
+        }
+      }[]
+    }
+  }
   pageContext: {
-    categories: {
+    category: {
       key: string
       name: string
-      banner: {
-        childImageSharp: {
-          fluid: FluidObject
-        }
-      }
-    }[]
+    }
   }
 }
 
 export default class CategoryPostsPage extends React.Component<IProps> {
   public render() {
-    // tslint:disable-next-line: no-console
-    console.log(this)
-    // const {categories = []} = this.props.pageContext
-
     const {category} = this.props.pageContext
 
     const posts = this.props.data.allMarkdownRemark.edges
 
-    // tslint:disable-next-line: no-console
-    console.log(posts)
-
     return (
       <App>
         <Helmet title={category.name} />
-        <Title title={category.name.toUpperCase()} />
+        <Title title={`CATEGORY/${category.name.toUpperCase()}`} />
         <Flex alignItems="center">
           <Box mx="auto" width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
             <Flex flexWrap="wrap" width={1} px={20}>

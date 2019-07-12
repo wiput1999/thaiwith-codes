@@ -94,6 +94,51 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        resolveEnv: () => GATSBY_ENV,
+        env: {
+          production: {
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/pages', '/categories', '/category', '/authors', '/author'],
+              },
+            ],
+          },
+          staging: {
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/'],
+              },
+            ],
+          },
+          development: {
+            policy: [
+              {
+                userAgent: '*',
+                disallow: ['/'],
+              },
+            ],
+          },
+        },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+        exclude: [
+          '/pages/*',
+          '/categories',
+          '/category/*',
+          '/authors',
+          '/author/*',
+        ],
+      },
+    },
+    {
       resolve: `gatsby-plugin-styled-components`,
       options: {
         displayName: true
@@ -106,6 +151,13 @@ module.exports = {
       options: {
         pathToConfigModule: `src/utils/typography`,
         omitGoogleFont: true,
+      },
+    },
+    `gatsby-plugin-netlify`,
+    {
+      resolve: "gatsby-plugin-netlify-cache",
+      options: {
+        cachePublic: true,
       },
     },
     {

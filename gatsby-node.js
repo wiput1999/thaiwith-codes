@@ -177,59 +177,14 @@ exports.createPages = async ({ graphql, actions }) => {
     }))
   })
 
-  // Create author pages
-
-  let authorPathPrefix = '/author/'
-
-  _.each(authors, async author => {
-    const authorResult = await graphql(
-      `
-        {
-          blogs: allMarkdownRemark(
-            filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
-          ) {
-            edges {
-              node {
-                frontmatter {
-                  title
-                }
-              }
-            }
-          }
-        }
-      `
-    )
-
-    let totalCount = authorResult.data.blogs.edges.length
-
-    let authorPages = Math.ceil(totalCount / postsPerPage)
-    let pathPrefix = authorPathPrefix + author.node.user
-    _.times(authorPages, i => {
-      createPage({
-        path: i === 0 ? pathPrefix : `${pathPrefix}/pages/${i + 1}`,
-        component: authorPost,
-        context: {
-          author: author.node.user,
-          currentPage: i + 1,
-          limit: postsPerPage,
-          numPages: authorPages,
-          pathPrefix,
-          regex: `/${author.node.user}/`,
-          skip: i * postsPerPage,
-        },
-      })
-    })
-  })
-
   // Create author list page
   const authorRaw = []
-  const authorPromise = []
 
-  const fetchAuthor = async author => {
+  const fetchAuthorList = async author => {
     const authorResult = await graphql(
       `
         {
-          author: file(relativePath: {eq: "${author.node.user}.jpg"}) {
+          banner: file(relativePath: {eq: "author.${author.node.user}.jpg"}) {
             childImageSharp {
               fluid(maxWidth: 1000, quality: 90) {
                 base64
@@ -252,22 +207,85 @@ exports.createPages = async ({ graphql, actions }) => {
       name: author.node.name,
       facebook: author.node.facebook,
       twitter: author.node.twitter,
-      banner: authorResult.data.author,
+      banner: authorResult.data.banner,
     })
   }
 
-  _.each(authors, author => {
-    authorPromise.push(fetchAuthor(author))
-  })
-
-  await Promise.all(authorPromise)
+  await Promise.all(authors.map(author => fetchAuthorList(author)))
 
   createPage({
-    path: '/authors',
+    path: `/author`,
     component: authorList,
     context: {
       authors: _.sortBy(authorRaw, o => o.name),
     },
+  })
+
+  // Create author blog listing page
+  const authorBlogRaw = []
+
+  const fetchAuthorBlog = async author => {
+    const authorResult = await graphql(`
+      {
+        blogs: allMarkdownRemark(
+          sort: {fields: [frontmatter___date], order: DESC}
+          filter: {frontmatter: {author: {regex: "/${author.node.user}/"}}}
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+                subtitle
+                author
+                banner {
+                  childImageSharp {
+                    fluid(maxWidth: 1000, quality: 90) {
+                      base64
+                      tracedSVG
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `)
+
+    return authorBlogRaw.push({
+      author,
+      raw: authorResult.data,
+    })
+  }
+
+  await Promise.all(authors.map(author => fetchAuthorBlog(author)))
+
+  authorBlogRaw.map(o => {
+    const authorListingPages = Math.ceil(o.raw.blogs.edges.length / postsPerPage)
+
+    _.times(authorListingPages, i => createPage({
+      path: i === 0 ? `/author/${o.author.node.user}` : `/author/${o.author.node.user}/pages/${i + 1}`,
+      component: authorPost,
+      context: {
+        pathPrefix: `/author/${o.author.node.user}`,
+        author: o.author.node,
+        query: o.author.node.user,
+        currentPage: i + 1,
+        numPages: authorListingPages,
+        regex: `/${o.author.node.user}/`,
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+      },
+    }))
   })
 
   return null
