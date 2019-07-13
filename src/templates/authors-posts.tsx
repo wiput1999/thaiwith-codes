@@ -50,9 +50,9 @@ export default class AuthorPostsPage extends React.Component<IProps> {
       <App>
         <Helmet title={author.name} />
         <Title title={`AUTHOR/${author.name.toUpperCase()}`} />
-        <Flex alignItems="center">
-          <Box mx="auto" width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
-            <Flex flexWrap="wrap" width={1} px={20}>
+        <Flex alignItems='center'>
+          <Box mx='auto' width={[22 / 24, 22 / 24, 22 / 24, 20 / 24]}>
+            <Flex flexWrap='wrap' width={1} px={20}>
               {posts.map((post, i) => (
                 <Box width={[1, 1 / 2, 1 / 3, 1 / 3]} px={[0, 1, 2, 2]} py={[2, 0, 0, 0]} key={`posts-${i}`}>
                   <Link href={`${post.node.fields.slug}`}>
