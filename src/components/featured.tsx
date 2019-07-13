@@ -16,7 +16,7 @@ interface FeaturedInterface {
 }
 
 export class Featured extends React.Component<FeaturedInterface> {
-  public render () {
+  public render() {
     return (
       <StaticQuery
         query={graphql`

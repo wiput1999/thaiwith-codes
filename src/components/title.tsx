@@ -6,7 +6,7 @@ interface BlogCardInterface {
   title: string
 }
 
-export function Title ({ title }: BlogCardInterface) {
+export function Title({ title }: BlogCardInterface) {
   return (
     <Flex alignItems='center'>
       <Box mx='auto' width={20 / 24} mt={50}>

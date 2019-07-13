@@ -15,10 +15,10 @@ interface DataInterface {
       node: {
         fields: {
           slug: string
-        },
+        }
         frontmatter: {
-          title: string,
-          subtitle: string,
+          title: string
+          subtitle: string
           banner: {
             childImageSharp: {
               fluid: FluidObject
@@ -27,20 +27,16 @@ interface DataInterface {
         }
       }
     }[]
-  },
+  }
 }
 
 export class More extends React.Component {
-  public render () {
+  public render() {
     return (
       <StaticQuery
         query={graphql`
           query HeadingQuery {
-            allMarkdownRemark(
-              sort: {fields: [frontmatter___date], order: DESC}
-              limit: 10
-              skip: 5
-            ) {
+            allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 10, skip: 5) {
               edges {
                 node {
                   fields {

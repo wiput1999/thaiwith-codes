@@ -5,7 +5,7 @@ import { Box, Flex, Heading, Link, Text } from 'rebass'
 import { TwitterTimelineEmbed } from 'react-twitter-embed'
 
 export class Footer extends React.Component {
-  public render () {
+  public render() {
     const navLinks = [
       {
         href: '/',

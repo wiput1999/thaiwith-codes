@@ -74,7 +74,7 @@ interface PropsInterface {
 }
 
 class BlogPostTemplate extends React.Component<PropsInterface> {
-  public render () {
+  public render() {
     const post = this.props.data.markdownRemark
     // const { previous, next } = this.props.pageContext
     const { banner, title } = this.props.data.markdownRemark.frontmatter

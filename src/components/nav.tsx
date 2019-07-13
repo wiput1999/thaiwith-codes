@@ -3,7 +3,7 @@ import React from 'react'
 import { Box, Flex, Heading, Link } from 'rebass'
 
 export class Nav extends React.Component {
-  public render () {
+  public render() {
     const navLinks = [
       {
         href: '/',

@@ -41,7 +41,7 @@ interface IProps {
 }
 
 export default class AuthorPostsPage extends React.Component<IProps> {
-  public render () {
+  public render() {
     const { author } = this.props.pageContext
 
     const posts = this.props.data.allMarkdownRemark.edges
@@ -75,15 +75,15 @@ export default class AuthorPostsPage extends React.Component<IProps> {
 
 export const pageQuery = graphql`
   query authorPageQuery($query: String!, $limit: Int!, $regex: String!, $skip: Int!) {
-    authorsJson(user: {eq: $query}) {
+    authorsJson(user: { eq: $query }) {
       user
       name
       facebook
       twitter
     }
     allMarkdownRemark(
-      sort: {fields: [frontmatter___date], order: DESC}
-      filter: {frontmatter: {author: {regex: $regex}}}
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { author: { regex: $regex } } }
       limit: $limit
       skip: $skip
     ) {
